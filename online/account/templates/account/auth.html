@@ -1,0 +1,30 @@
+{% extends "lending/base.html" %}
+
+{% block content %}
+<main>
+    <div class="row">
+        <div class="col-3">
+        </div>
+        <div class="col-6">
+                <form class="mt-5" action="{% url 'account:auth'%}" method="POST">
+
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        {{ form.email }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.password }}
+                    </div>
+
+                    <p>{{error}}</p>
+
+                    <button type="submit" class="btn btn-secondary">Войти</button>
+                </form>
+        </div>
+
+        <div class="col-3">
+        </div>
+    </div>
+</main>
+
+{% endblock content %}
