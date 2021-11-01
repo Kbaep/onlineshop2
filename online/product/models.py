@@ -31,7 +31,16 @@ class Product(models.Model):
 
 class Basket(models.Model):
     id_customer = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
+    product = models.ManyToManyField(Product, through= 'ProductBasket')
 
+class ProductBasket(models.Model):
+    id_product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    id_basket = models.ForeignKey(Basket, on_delete=models.CASCADE, null=True, blank=True)
+    numbers = models.IntegerField()
+    price = models.FloatField()
+
+    # def __str__(self):
+    #     return f'{self.id_order}'
 
 class Status(models.Model):
     name = models.CharField(max_length=255)
@@ -48,13 +57,9 @@ class Order(models.Model):
     # def __str__(self):
     #     return f'{self.id_customer.name}'
 
-
-class Orderline(models.Model):
-    id_product = models.OneToOneField(Product, on_delete=models.CASCADE)
-    id_basket = models.ForeignKey(Basket, on_delete=models.CASCADE, null=True, blank=True)
+class ProductOrder(models.Model):
+    id_product = models.ForeignKey(Product, on_delete=models.CASCADE)
     id_order = models.ForeignKey(Order, on_delete=models.CASCADE, null=True, blank=True)
     numbers = models.IntegerField()
     price = models.FloatField()
 
-    # def __str__(self):
-    #     return f'{self.id_order}'

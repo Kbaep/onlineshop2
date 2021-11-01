@@ -15,14 +15,14 @@ class TypeUserProfile(models.Model):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    surname = models.CharField(max_length=50)
-    name = models.CharField(max_length=50)
+    surname = models.CharField(max_length=50, default='')
+    name = models.CharField(max_length=50, default='')
     email = models.CharField(max_length=50)
-    id_type_user_profile = models.ForeignKey(TypeUserProfile, on_delete=models.CASCADE)
-    country = models.CharField(max_length=50)
-    city = models.CharField(max_length=50)
-    street = models.CharField(max_length=50)
-    zip_code = models.IntegerField()
+    id_type_user_profile = models.ForeignKey(TypeUserProfile, on_delete=models.CASCADE, null=True, blank=True)
+    country = models.CharField(max_length=50, default='')
+    city = models.CharField(max_length=50, default='')
+    street = models.CharField(max_length=50, default='')
+    zip_code = models.IntegerField(default=0)
 
     class Meta:
         db_table = "customer"
