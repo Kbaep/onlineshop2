@@ -27,6 +27,13 @@
         {% endfor %}
         </tbody>
     </table>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <a class="btn btn-outline-secondary" href="{% url 'product:order_complete' %}">Заказать</a>
+        </div>
+        <div class="col"></div>
+    </div>
 </main>
 
 {% endblock content %}

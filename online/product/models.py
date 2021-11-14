@@ -51,7 +51,7 @@ class Status(models.Model):
 
 class Order(models.Model):
     id_status = models.ForeignKey(Status, on_delete=models.CASCADE, null=True, blank=True)
-    id_customer = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
+    id_customer = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     total = models.FloatField()
 
     # def __str__(self):

@@ -1,0 +1,24 @@
+{% extends "lending/base.html" %}
+
+{% block content %}
+<main>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">№ поз</th>
+            <th scope="col">Наименование</th>
+            <th scope="col">Количество</th>
+        </tr>
+        </thead>
+        <tbody> {% for product_basket in products %}
+        <tr>
+            <th scope="row">1</th>
+            <td>{{product_basket.id_product.name}}</td>
+            <td>{{product_basket.numbers}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</main>
+
+{% endblock content %}
